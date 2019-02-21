@@ -20,4 +20,14 @@ class Book:
     def browse(self):
         random.choice(self.on_shelf)
 
-    
+    def lent_out(self, Book):
+        if Book == self.on_loan:
+            return True
+        else:
+            return False
+
+    def current_due_date(self):
+        now = datetime.now()
+        two_weeks = 60 * 60 * 24 * 14  # two weeks expressed in seconds
+        future_timestamp = now.timestamp() + two_weeks
+        return datetime.fromtimestamp(future_timestamp)
